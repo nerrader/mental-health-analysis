@@ -1,0 +1,9 @@
+[project]
+name = "mental-health-analysis"
+version = "1.0.0"
+description = "A project that analyzes the mental health conditions according to a 2016 survey in tech found in kaggle."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pandas>=3.0.3",
+]
