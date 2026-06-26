@@ -1,6 +1,3 @@
-def main():
-    print("Hello from mental-health-analysis!")
+import pandas as pd
 
-
-if __name__ == "__main__":
-    main()
+print(pd.__version__)
