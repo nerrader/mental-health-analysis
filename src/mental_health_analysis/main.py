@@ -1,3 +1,6 @@
+"""The main module for the data cleaning processes, so that the data is ready for analysis.
+It grabs data from the data/raw/ directory, and then outputting it in data/processed/"""
+
 import pandas as pd
 import numpy as np
 

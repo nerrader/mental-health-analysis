@@ -1,3 +1,5 @@
+"""This file is for storing the script's constants."""
+
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
