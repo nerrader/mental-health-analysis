@@ -61,12 +61,13 @@ def main() -> None:
     #     print(f"{column} ({df[column].dtype}):", df[column].unique())
 
     # print(df.duplicated().sum() == 0) This is True, meaning there are no duplicate values in this dataset.
+    # print(df.isnull().sum() == 0) This returns an all True dataset, meaning there are also no null values.
 
     df.to_csv(
         const.PROCESSED_DATA_DIR_PATH / "processed.csv", index=False, encoding="utf-8"
     )
     print(
-        "Cleaning finished, look at data/processed/processed.csv to see your new cleaned csv."
+        "Cleaning finished, look at data/processed/processed.csv to see your new processed csv"
     )
 
 
