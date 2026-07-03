@@ -2,42 +2,71 @@
 It grabs data from the data/raw/ directory, and then outputting it in data/processed/"""
 
 import pandas as pd
-import numpy as np
-
 from mental_health_analysis import constants as const
 
 
 def main() -> None:
     df: pd.DataFrame = pd.read_csv(
-        const.RAW_DATA_DIR_PATH / "mental-health-in-tech-2016.csv"
+        const.RAW_DATA_DIR_PATH / "mental_health_burnout_tech_2026.csv"
     )
-    # Dropped because it is meant to be a global analysis, not one focused on the US only.
-    # A global analysis wouldn't need this type of data.
-    df = df.drop(
-        columns=[
-            "What US state or territory do you live in?",
-            "What US state or territory do you work in?",
-        ]
-    )
-    general_value_map: dict = {
-        "1": True,
-        "0": False,
-        "yes": True,
-        "no": False,
-        "i don't know": np.nan,
-        "maybe": np.nan,
-        "n/a": np.nan,
-        "i'm not sure": np.nan,
-        "unsure": np.nan,
-    }
 
-    for column_name, column_values in df.items():
-        df[column_name] = (
-            column_values.astype(str).str.lower().replace(general_value_map)
-        )
+    # initial_memory_usage = df.memory_usage(deep=True).sum()
+
+    unnecessary_columns: list[str] = [
+        "employee_id",
+        "age",
+        "gender",
+        "job_role",
+        "seniority_level",
+        "years_experience",
+        "years_at_company",
+        "industry",
+        "exercise_days_per_week",
+        "vacation_days_taken",
+        "ai_tools_daily",
+        "job_change_intention",
+        "therapy_access",
+    ]
+
+    df = df.drop(columns=unnecessary_columns)
+
+    # after_drop_column_memory_usage = df.memory_usage(deep=True).sum()
+
+    float_columns = df.select_dtypes(include="float64").columns
+    df[float_columns] = df[float_columns].apply(
+        lambda column: pd.to_numeric(column, downcast="float")
+    )
+
+    int_columns = df.select_dtypes(include="int64").columns
+    df[int_columns] = df[int_columns].apply(
+        lambda column: pd.to_numeric(column, downcast="integer")
+    )
+
+    binary_columns = [
+        column for column in df.columns if set(df[column].unique()).issubset([0, 1])
+    ]
+    df[binary_columns] = df[binary_columns].astype("bool")
+
+    # after_downcast_memory_usage = df.memory_usage(deep=True).sum()
+
+    # Uncomment these and the variables above if you want to see the memory saved statistics.
+    # print(f"Initial: {initial_memory_usage}")
+    # print(f"After droppping columns: {after_drop_column_memory_usage} ")
+    # print(f"Saved {(initial_memory_usage - after_drop_column_memory_usage) / initial_memory_usage * 100}% memory")
+    # print(f"After downcasting memory usage: {after_downcast_memory_usage}")
+    # print(f"Saved {(after_drop_column_memory_usage - after_downcast_memory_usage) / after_drop_column_memory_usage * 100}% memory")
+
+    # Uncomment these two lines if you want to see the unique values of each column
+    # for column in df:
+    #     print(f"{column} ({df[column].dtype}):", df[column].unique())
+
+    # print(df.duplicated().sum() == 0) This is True, meaning there are no duplicate values in this dataset.
 
     df.to_csv(
         const.PROCESSED_DATA_DIR_PATH / "processed.csv", index=False, encoding="utf-8"
+    )
+    print(
+        "Cleaning finished, look at data/processed/processed.csv to see your new cleaned csv."
     )
 
 
