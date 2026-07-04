@@ -1,9 +1,9 @@
 # Mental Health Analysis
 
 In this data analysis project, I will try and analyze data.
-shocker isn't it
+shocker isn't it?
 
-## Questions
+## Core Project Questions
 
 1. Is there a tipping point where a higher salary doesn't correlate with higher job satisfaction and lower physiological distress, and what factors contribute to that plateau's existence?
 
@@ -11,17 +11,23 @@ shocker isn't it
 
 2. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
 
-    Hypothesis: Yes, this is due to the fact that a bigger team size and a bigger company size would mean more work was needed to be done, and more mental effort is required to be able to get all those people to work together as a single unit.
+    Hypothesis: Larger company/team sizes correlates with higher burnout and stress levels. More mental bandwith is needed due to the complexity of organizing teams at a higher scale, leading to higher cognitive load and reduced psychological well-being.
 
-3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and might there be any factors to explain why some work locations might be less fulfilling than others?
+3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
 
     Hypothesis: People working remotely will have better job satisfaction scores, as it allows for a more flexible lifestyle than other work locations.
 
-4. Are there any geographical regions or countries have a higher correlation between the gap of employees having high clinical mental health scores like PHQ9 and/or GAD7, and actual mental health support/therapy usage, and what factors might explain this disparity?
+4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
 
     Hypothesis: It will have a pattern, as the country's culture, and stigma related to mental health and therapy, will significantly impact the amount of people getting help.
 
-## Finding the Dataset
+## Key Insights
+
+Project is still currently in progress, so no critical insights have been found yet.
+
+## Methodology
+
+### Finding the Dataset
 
 At first, I looked at the I-NAMHS survey and the WHO health indicators dataset provided by data.humdata.org. But after a quick look at it, I saw that the dataset it provided had a lack of structural complexity and variable density, which did not support the deeper analysis I intended to conduct.
 
@@ -32,7 +38,7 @@ used in real medical practice globally.
 
 [LINK TO MENTAL HEALTH DATASET](https://www.kaggle.com/datasets/mohankrishnathalla/mental-health-and-burnout-in-tech-workers-2026)
 
-## Data Cleaning Process
+### Data Cleaning Process
 
 Now in general, datasets, or data in general, need to be cleaned, so that they are ready for analysis. This one is no different.
 
@@ -48,11 +54,13 @@ Then, I got started with the actual data cleaning, this was to optimize memory u
 
 I first started by removing and dropping columns that were not going to answer our questions in this deep-dive analysis. This step alone already resulted in a 40% decrease in memory consumption.
 
-Next, I went ahead and used the `pd.to_numeric` function on some of those columns to save some memory, turning `float64` to `float32` datatypes, `int64` to `int32` and `int16` types, and turning the binary columns (column that only have 1 and 0) to a `bool` type. This step resulted in a further decrease in memory consumption of 20%.
+Next, I went ahead and used the `pd.to_numeric()` function on some of those columns to save some memory, turning `float64` to `float32` datatypes, `int64` to `int32` and `int16` types, and turning the binary columns (column that only have 1 and 0) to a `bool` type. This step resulted in a further decrease in memory consumption of 20%.
 
 Now, no amount of memory optimization is going to save it from inconsistent data values, so I checked the columns to see if there were any outliers in it's unique values. To my surprise, there weren't any duplicate values nor any inconsistent values. So, safe to say it is now ready for analysis.
 
-## Data Analysis
+(To be honest, these memory savings don't even do that much anyway, since this only has maximum 100k rows but it's the thought that counts right?)
+
+### Data Analysis
 
 For analysis, I used SQL to find data insights, because the queries are reproducable and ...
 
@@ -69,3 +77,12 @@ since there was no such thing as a responsibility_score in the dataset, so my fi
 However, when I tested out the columns to see if they were correlated using `CORR()` it turns out they all have almost 0 correlation with each other.
 
 So, I will be using the next closest thing to measure responsibility, which is the seniority_level of these employees, as a higher seniority_level almost always means more responsibilities. -->
+
+## Technical Challenges
+
+pass
+since this only has maximum 100k rows
+
+## Future Work
+
+pass
