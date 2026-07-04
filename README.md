@@ -55,3 +55,17 @@ Now, no amount of memory optimization is going to save it from inconsistent data
 ## Data Analysis
 
 For analysis, I used SQL to find data insights, because the queries are reproducable and ...
+
+To start the process, I imported the data to bigquery as a table in my mental-health-analysis dataset, and used DBeaver to connect to it and run SQL queries.
+
+For the first quetion, I decided to test out the question first, as it was already assuming that a higher salary by default has a positive correlation with job satisfaction and lower psychological distress.
+
+So I started to write a SQL query for it, I first aggregated the salary to groups/brackets, one for each increment of 10.000, this was to ensure ..., then I also selected `job_satisfaction_score`, and all four main indicators of psychological distress: `burnout_score`, `stress_score`, `phq9_score` and `gad7_score`. This was to see how some of these would correlate to salary and job satisfaction.
+
+<!-- Add this later after ur done explaining the descriptive process
+
+since there was no such thing as a responsibility_score in the dataset, so my first idea was to use z-scores for columns deadline_pressure_score, meetings_per_day and work_hours_per_week to try get a responsibility index score, to estimate and mimic a real responsibility_score column.
+
+However, when I tested out the columns to see if they were correlated using `CORR()` it turns out they all have almost 0 correlation with each other.
+
+So, I will be using the next closest thing to measure responsibility, which is the seniority_level of these employees, as a higher seniority_level almost always means more responsibilities. -->
