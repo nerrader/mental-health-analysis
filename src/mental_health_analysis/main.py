@@ -17,7 +17,6 @@ def main() -> None:
         "age",
         "gender",
         "job_role",
-        "seniority_level",
         "years_experience",
         "years_at_company",
         "industry",
@@ -57,8 +56,8 @@ def main() -> None:
     # print(f"Saved {(after_drop_column_memory_usage - after_downcast_memory_usage) / after_drop_column_memory_usage * 100}% memory")
 
     # Uncomment these two lines if you want to see the unique values of each column
-    # for column in df:
-    #     print(f"{column} ({df[column].dtype}):", df[column].unique())
+    for column in df:
+        print(f"{column} ({df[column].dtype}):", df[column].unique())
 
     # print(df.duplicated().sum() == 0) This is True, meaning there are no duplicate values in this dataset.
     # print(df.isnull().sum() == 0) This returns an all True dataset, meaning there are also no null values.
