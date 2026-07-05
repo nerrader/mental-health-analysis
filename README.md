@@ -9,21 +9,28 @@ shocker isn't it?
 
     Hypothesis: I believe so, because people with a higher salary tend to have more responsibilities, and that eventually cancels out the satisfaction gained from having a higher salary, which in turn also worsens their mental health conditions.
 
-    Status: There is a plateau of $110k where from then on the job satisfaction scores stayed stable. However surprisingly, the overall negative mental health scores kept rising regardless of a plateau.
+    Status: Roles requiring lower amounts of responsibilities (seniority level 1-3) do have a plateau regarding job satisfaction at around the $110k salary bucket, while their psychological distress metric scores stay consistently low regardless of salary.
 
-Here is the diagram if you're interested:
-<img width="1442" height="885" alt="image" src="https://github.com/user-attachments/assets/49eb8256-4eb7-47a9-8365-d3fa1c1403cd" />
+    This indicates that for employees at this level, higher salaries serve enough as an effective incentive for them to work harder without getting severe mental health reprocussions.
 
+    Conversely, roles with a higher level of seniority tend to have higher amounts of responsibilities, which had a noticable significant negative impact on their overall mental health, as the psychological distress metrics (phq9, gad7, etc) remained consistently high regardless of salary. Their job satisfaction also plateaued at around an $150k salary.
 
-3. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
+    ![Image of the diagram supporting the previous statements](images/salary_seniority_wellbeing_trellis_diagram.png)
+
+    There is an extremely high jump of negative mental health indicator scores from seniority level 1-3 to seniority level 4-5 (leads and managers).
+
+    {diagram}
+    (In this diagram, I decided to not look at seniority level 6 (principles) as they contain too much noise and do not provide any trends or visual insights.)
+
+2. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
 
     Hypothesis: Larger company/team sizes correlates with higher burnout and stress levels. More mental bandwith is needed due to the complexity of organizing teams at a higher scale, leading to higher cognitive load and reduced psychological well-being.
 
-4. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
+3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
 
     Hypothesis: People working remotely will have better job satisfaction scores, as it allows for a more flexible lifestyle than other work locations.
 
-5. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
+4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
 
     Hypothesis: It will have a pattern, as the country's culture, and stigma related to mental health and therapy, will significantly impact the amount of people getting help.
 
@@ -82,19 +89,24 @@ For the first quetion, I decided to test out the question first, as it was alrea
 So I started to write a SQL query for it, I first grouped/bucketed the salary to $10,000 increments, this was to reduce noise in the data and easily visualize patterns, then I also selected `job_satisfaction_score`, and all four main indicators of psychological distress: `burnout_score`, `stress_score`, `phq9_score` and `gad7_score`. This was to see how some of these would correlate to salary and job satisfaction.
 
 These were the results when I exported it to tableau:
-<img width="1442" height="885" alt="image" src="https://github.com/user-attachments/assets/8e4e3bc9-24a7-4edd-a6b5-f34dd293f4a2" />
+![Basic graph of salary over regular psychological health metrics](images/salary_wellbeing_basic_graph.png)
 
 As you can see, a higher salary does correlate with a higher job satisfaction score up until about the 110k bracket, where it plateaus. However, unexpectedly, with a higher salary, all the indicators relating to psychological distress increase, atleast slightly.
 
 Therefore, a higher salary does correlate with higher job satisfaction until a certain point ($110k), however it does correlate negatively with your overall mental health.
 
-<!-- Add this later after ur done explaining the descriptive process
+Now since we found out that the question was real, now we figure out the why part.
 
-since there was no such thing as a responsibility_score in the dataset, so my first idea was to use z-scores for columns deadline_pressure_score, meetings_per_day and work_hours_per_week to try get a responsibility index score, to estimate and mimic a real responsibility_score column.
+Since there was no such thing as a responsibility_score column in the dataset, so my first idea was to use z-scores for columns deadline_pressure_score, meetings_per_day and work_hours_per_week to try get a responsibility index score, to estimate and mimic a real responsibility_score column.
 
 However, when I tested out the columns to see if they were correlated using `CORR()` it turns out they all have almost 0 correlation with each other.
 
-So, I will be using the next closest thing to measure responsibility, which is the seniority_level of these employees, as a higher seniority_level almost always means more responsibilities. -->
+So, I will be using the next closest thing to measure responsibility, which is the seniority_level of these employees, as a higher seniority_level almost always means more responsibilities.
+
+I tried to use the scatter trellis plot to visualize the data, but I figured that a trellis line chart would be better because the trends are more visible and easier to spot, and the diagram just looks easier to look at overall.
+
+With this I noticed two things: 1. In seniority level 4-5 (lead and manager roles) I
+to be contineued
 
 ## Technical Challenges
 
