@@ -9,6 +9,8 @@ shocker isn't it?
 
     Hypothesis: I believe so, because people with a higher salary tend to have more responsibilities, and that eventually cancels out the satisfaction gained from having a higher salary, which in turn also worsens their mental health conditions.
 
+    Status: There is a plateau of $110k where from then on the job satisfaction scores stayed stable. However surprisingly, the overall negative mental health scores kept rising regardless of a plateau.
+
 2. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
 
     Hypothesis: Larger company/team sizes correlates with higher burnout and stress levels. More mental bandwith is needed due to the complexity of organizing teams at a higher scale, leading to higher cognitive load and reduced psychological well-being.
@@ -68,7 +70,14 @@ To start the process, I imported the data to bigquery as a table in my mental-he
 
 For the first quetion, I decided to test out the question first, as it was already assuming that a higher salary by default has a positive correlation with job satisfaction and lower psychological distress.
 
-So I started to write a SQL query for it, I first aggregated the salary to groups/brackets, one for each increment of 10.000, this was to ensure ..., then I also selected `job_satisfaction_score`, and all four main indicators of psychological distress: `burnout_score`, `stress_score`, `phq9_score` and `gad7_score`. This was to see how some of these would correlate to salary and job satisfaction.
+So I started to write a SQL query for it, I first grouped/bucketed the salary to $10,000 increments, this was to reduce noise in the data and easily visualize patterns, then I also selected `job_satisfaction_score`, and all four main indicators of psychological distress: `burnout_score`, `stress_score`, `phq9_score` and `gad7_score`. This was to see how some of these would correlate to salary and job satisfaction.
+
+These were the results when I exported it to tableau:
+{image try wait}
+
+As you can see, a higher salary does correlate with a higher job satisfaction score up until about the 110k bracket, where it plateaus. However, unexpectedly, with a higher salary, all the indicators relating to psychological distress increase, atleast slightly.
+
+Therefore, a higher salary does correlate with higher job satisfaction until a certain point ($110k), however it does correlate negatively with your overall mental health.
 
 <!-- Add this later after ur done explaining the descriptive process
 
