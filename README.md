@@ -11,21 +11,30 @@ shocker isn't it?
 
     Status: There is a plateau of $110k where from then on the job satisfaction scores stayed stable. However surprisingly, the overall negative mental health scores kept rising regardless of a plateau.
 
-2. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
+Here is the diagram if you're interested:
+<img width="1442" height="885" alt="image" src="https://github.com/user-attachments/assets/49eb8256-4eb7-47a9-8365-d3fa1c1403cd" />
+
+
+3. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
 
     Hypothesis: Larger company/team sizes correlates with higher burnout and stress levels. More mental bandwith is needed due to the complexity of organizing teams at a higher scale, leading to higher cognitive load and reduced psychological well-being.
 
-3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
+4. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
 
     Hypothesis: People working remotely will have better job satisfaction scores, as it allows for a more flexible lifestyle than other work locations.
 
-4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
+5. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
 
     Hypothesis: It will have a pattern, as the country's culture, and stigma related to mental health and therapy, will significantly impact the amount of people getting help.
 
 ## Key Insights
 
-Project is still currently in progress, so no critical insights have been found yet.
+- Higher salaries correlate with lower overall mental health (includes PHQ9, GAD7, overall stress and burnout). This suggests that higher compensation and financial incentives do not offset the negative impacts (on mental health) regarding increased job responsibility.
+- Job satisfaction plateaus at a score of around 5.8-6.0 at the $110k salary threshold. This suggests that companies should pivot to other startegies for higher earning roles.
+
+## Recommendations
+
+WIP: This is where I will give recommendations/pieces of advice for companies/employers regarding on their employee's mental health.
 
 ## Methodology
 
@@ -64,7 +73,7 @@ Now, no amount of memory optimization is going to save it from inconsistent data
 
 ### Data Analysis
 
-For analysis, I used SQL to find data insights, because the queries are reproducable and ...
+For analysis, I used SQL to find data insights, because the queries are reproducable, self-documenting, and it helps with mainting a more transparent audit trail on my iterations of the data transformations.
 
 To start the process, I imported the data to bigquery as a table in my mental-health-analysis dataset, and used DBeaver to connect to it and run SQL queries.
 
@@ -73,7 +82,7 @@ For the first quetion, I decided to test out the question first, as it was alrea
 So I started to write a SQL query for it, I first grouped/bucketed the salary to $10,000 increments, this was to reduce noise in the data and easily visualize patterns, then I also selected `job_satisfaction_score`, and all four main indicators of psychological distress: `burnout_score`, `stress_score`, `phq9_score` and `gad7_score`. This was to see how some of these would correlate to salary and job satisfaction.
 
 These were the results when I exported it to tableau:
-{image try wait}
+<img width="1442" height="885" alt="image" src="https://github.com/user-attachments/assets/8e4e3bc9-24a7-4edd-a6b5-f34dd293f4a2" />
 
 As you can see, a higher salary does correlate with a higher job satisfaction score up until about the 110k bracket, where it plateaus. However, unexpectedly, with a higher salary, all the indicators relating to psychological distress increase, atleast slightly.
 
