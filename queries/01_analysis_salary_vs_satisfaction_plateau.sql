@@ -1,4 +1,3 @@
--- the main query to answer the first questions hypothesis
 SELECT
 	CASE
 		WHEN LOWER(seniority_level) = 'junior' THEN 1
@@ -51,3 +50,73 @@ FROM
 	`ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
 GROUP BY int_seniority_level
 ORDER BY int_seniority_level;
+
+
+-- This was just to see how many number of employees were in each salary bucket
+SELECT ROUND(salary_usd, -4) as salary_bucket, COUNT(1) as num_of_employees
+FROM `ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
+GROUP BY salary_bucket 
+ORDER BY salary_bucket;
+
+
+-- add more controlled variables (filtering sleep hours and work hours) to try and prove causality
+SELECT
+	CASE
+		WHEN LOWER(seniority_level) = 'junior' THEN 1
+		WHEN LOWER(seniority_level) = 'mid' THEN 2
+		WHEN LOWER(seniority_level) = 'senior' THEN 3
+		WHEN LOWER(seniority_level) = 'lead' THEN 4
+		WHEN LOWER(seniority_level) = 'manager' THEN 5
+		WHEN LOWER(seniority_level) = 'principal' THEN 6
+		ELSE 0
+	END AS int_seniority_level,
+	ROUND(salary_usd, -4) as salary_bucket,
+	ROUND(AVG(job_satisfaction_score), 2) as avg_job_satisfaction_score,
+	ROUND(AVG(stress_score), 2) as avg_stress_score,
+	ROUND(AVG(burnout_score), 2) as avg_burnout_score,
+	ROUND(AVG(phq9_score), 2) as avg_phq9_score,
+	ROUND(AVG(gad7_score), 2) as avg_gad7_score,
+FROM `ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
+WHERE
+	sleep_hours_per_night < 7 AND
+	work_hours_per_week > 50
+GROUP BY
+	int_seniority_level,
+	salary_bucket
+HAVING COUNT(1) >= 100
+ORDER BY
+	int_seniority_level,
+	salary_bucket;
+
+-- the opposite of the previous script (in the where cause) 
+-- to further try and prove that responsibility amount is the thing thats affecting this
+
+-- add more controlled variables (filtering sleep hours and work hours) to try and prove causality
+SELECT
+	CASE
+		WHEN LOWER(seniority_level) = 'junior' THEN 1
+		WHEN LOWER(seniority_level) = 'mid' THEN 2
+		WHEN LOWER(seniority_level) = 'senior' THEN 3
+		WHEN LOWER(seniority_level) = 'lead' THEN 4
+		WHEN LOWER(seniority_level) = 'manager' THEN 5
+		WHEN LOWER(seniority_level) = 'principal' THEN 6
+		ELSE 0
+	END AS int_seniority_level,
+	ROUND(salary_usd, -4) as salary_bucket,
+	ROUND(AVG(job_satisfaction_score), 2) as avg_job_satisfaction_score,
+	ROUND(AVG(stress_score), 2) as avg_stress_score,
+	ROUND(AVG(burnout_score), 2) as avg_burnout_score,
+	ROUND(AVG(phq9_score), 2) as avg_phq9_score,
+	ROUND(AVG(gad7_score), 2) as avg_gad7_score,
+FROM `ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
+WHERE
+	sleep_hours_per_night > 6 AND
+	work_hours_per_week < 50
+GROUP BY
+	int_seniority_level,
+	salary_bucket
+HAVING COUNT(1) >= 100
+ORDER BY
+	int_seniority_level,
+	salary_bucket;
+
