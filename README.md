@@ -10,19 +10,15 @@ shocker isn't it?
     Hypothesis: Yes, higher salaries tend to mean more responsibilities, and that eventually cancels out the satisfaction gained from having higher financial compensation, which in turn also worsens their mental health.
 
     Status:
-    There is a plateau regarding job satisfaction of $110k regardless of job seniority nor the amount of required responsibilities.
+    There is a general plateau regarding job satisfaction of $110k, regardless of status.
 
-    However, what I found interesting is that employees with a seniority level of 1-3 have relatively stable overall mental health. This indicates that for employees at this level, higher salaries serve enough as an effective incentive for them to work harder without getting severe mental health reprocussions.
+    Findings also conclude that the combination of high amounts of weekly work hours and low amounts of daily sleep duration contribute to worsening mental health in every mental indicator relating to psychological distress. Roles that require higher amounts of responsibility (more senior positions) do require just that, leading to the seniors experiencing poor mental health compared to the regular workers.
 
-    Conversely, roles with a higher level of seniority tend to have higher amounts of responsibilities, which had a noticable significant negative impact on their overall mental health, as the psychological distress metrics (phq9, gad7, etc) remained consistently high regardless of salary.
+    Interestingly, these psychological distress indicator scores stayed high regardless of salary. Conversely, employees with a seniority level of 1-3 have relatively stable overall mental health. This indicates that for employees at this level, higher salaries serve enough as an effective incentive for them to work harder without getting severe mental health reprocussions.
 
-    ![Image of the diagram supporting the previous statements](images/salary_seniority_wellbeing_trellis_diagram.png)
-
-    Due to what was said above, we can infer that higher amounts of responsibility in job roles has a high chance to cause higher amounts of pscyhological distress in employees.
+    ![Image of the diagram supporting the previous statements](images/first-hypothesis-summary.png)
 
     If you would want to see further proof, check the methodology section below in this README.
-
-    (In this diagram, I decided to not look at seniority level 6 (principles) as they contain too much noise and do not provide any trends or visual insights.)
 
 2. Does a bigger company size or bigger team size correlate to higher burnout and higher stress levels, and why?
 
@@ -40,6 +36,7 @@ shocker isn't it?
 
 - Higher salaries correlate with lower overall mental health (includes PHQ9, GAD7, overall stress and burnout). This suggests that higher compensation and financial incentives do not offset the negative impacts (on mental health) regarding increased job responsibility.
 - Job satisfaction plateaus at a score of around 5.8-6.0 at the $110k salary threshold. This suggests that companies should pivot to other startegies for higher earning roles.
+- The combination of high weekly work hours and low daily sleep duration contribute to higher amounts of psychological distress. Employees with higher job seniority may suffer more from this as they have more responsibilities, which creates an environment for that combination to thrive.
 
 ## Recommendations
 
@@ -112,6 +109,14 @@ And I noticed the results, were almost identical, with the exception of a slight
 ![Diagram to try and prove causality](images/proving-first-hypothesis-causation-1.png)
 
 To try and further prove causation, I went ahead and modified that previous script, to show individuals with the opposite of what I said before (more than 7 hours of sleep, and less than 50 hours of weekly worktime). This was to ensure that even employees taking relatively good care of themselves might still suffer from drastic effeccts due to the amount of responsibility required for those roles.
+
+However, interestingly, when I ran the query, there were almost no results regarding that when checking for employees with higher seniority.
+
+![Diagram showing maybe it could not be responsibility](images/proving-first-hypothesis-causation-2.png)
+
+However, the results for the employees with lower seniority levels have shown that well rested workers have lower indicator scores of psychological distress than those who aren't.
+
+So safe to say, it is actually the combination of less daily sleep hours and more weekly work hours that create psychological distress in tech workers alike, and the seniority of their roles and the amount of responsibility required is not the cause, however it just supports those exact conditions.
 
 ## Technical Challenges
 
