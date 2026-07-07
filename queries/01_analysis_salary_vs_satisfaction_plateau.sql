@@ -61,6 +61,7 @@ ORDER BY salary_bucket;
 
 -- add more controlled variables (filtering sleep hours and work hours) to try and prove causality
 SELECT
+	'Stressed' as group_type,
 	CASE
 		WHEN LOWER(seniority_level) = 'junior' THEN 1
 		WHEN LOWER(seniority_level) = 'mid' THEN 2
@@ -75,7 +76,7 @@ SELECT
 	ROUND(AVG(stress_score), 2) as avg_stress_score,
 	ROUND(AVG(burnout_score), 2) as avg_burnout_score,
 	ROUND(AVG(phq9_score), 2) as avg_phq9_score,
-	ROUND(AVG(gad7_score), 2) as avg_gad7_score,
+	ROUND(AVG(gad7_score), 2) as avg_gad7_score
 FROM `ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
 WHERE
 	sleep_hours_per_night < 7 AND
@@ -84,15 +85,15 @@ GROUP BY
 	int_seniority_level,
 	salary_bucket
 HAVING COUNT(1) >= 100
-ORDER BY
-	int_seniority_level,
-	salary_bucket;
 
 -- the opposite of the previous script (in the where cause) 
 -- to further try and prove that responsibility amount is the thing thats affecting this
 
+UNION ALL -- to merge them into one result so tableau is happy
+
 -- add more controlled variables (filtering sleep hours and work hours) to try and prove causality
-SELECT
+SELECT 
+	'Well Rested' as group_type,
 	CASE
 		WHEN LOWER(seniority_level) = 'junior' THEN 1
 		WHEN LOWER(seniority_level) = 'mid' THEN 2
@@ -107,16 +108,17 @@ SELECT
 	ROUND(AVG(stress_score), 2) as avg_stress_score,
 	ROUND(AVG(burnout_score), 2) as avg_burnout_score,
 	ROUND(AVG(phq9_score), 2) as avg_phq9_score,
-	ROUND(AVG(gad7_score), 2) as avg_gad7_score,
+	ROUND(AVG(gad7_score), 2) as avg_gad7_score
 FROM `ivory-streamer-489402-u7`.mental_health_analysis.core_mental_health
 WHERE
-	sleep_hours_per_night > 6 AND
+	sleep_hours_per_night > 7 AND
 	work_hours_per_week < 50
 GROUP BY
 	int_seniority_level,
 	salary_bucket
-HAVING COUNT(1) >= 100
+HAVING COUNT(1) > 100
 ORDER BY
+	group_type,
 	int_seniority_level,
 	salary_bucket;
 
