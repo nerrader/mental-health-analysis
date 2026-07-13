@@ -17,9 +17,9 @@
 
     If you would want to see further proof, check the methodology section below in this README.
 
-2. Can a bigger company size or bigger team size introduce higher stress levels?
+2. Does a bigger team size scale correlate with burnout-like metrics, such as stress levels and work-life balance, and if so why?
 
-    Hypothesis: Larger company/team sizes correlates with higher stress levels. More mental bandwith is needed due to the complexity of organizing teams at a higher scale, leading to higher cognitive load and reduced psychological well-being.
+    Hypothesis: Larger company/team sizes correlates with lower work-life balance, as more mental bandwith is needed due to the complexity of organizing teams at a higher scale. This lower work-life balance then leads to higher stress and burnout levels.
 
 3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
 
@@ -112,6 +112,10 @@ Interestingly though, when I ran the query, there were almost no results regardi
 ![Diagram showing maybe it could not be responsibility](images/proving-first-hypothesis-causation-2.png)
 
 So safe to say, it is actually the combination of less daily sleep hours and more weekly work hours that create psychological distress in tech workers alike, and the seniority of their roles and the amount of responsibility required is not the cause, however it just supports those exact conditions.
+
+### The Second Question
+
+pass
 
 ## Technical Challenges
 
