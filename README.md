@@ -6,8 +6,7 @@
 
     Hypothesis: Yes, higher salaries tend to mean more responsibilities, and that eventually cancels out the satisfaction gained from having higher financial compensation, which in turn also worsens their mental health.
 
-    Status:
-    There is a general plateau regarding job satisfaction of $110k, regardless of status.
+    Status: It is somewhat true, as there is a general plateau regarding job satisfaction of $110k, regardless of status.
 
     Findings also conclude that the combination of high weekly work hours and low daily sleep duration contribute to worsening mental health in every mental indicator relating to psychological distress. Consequently, roles that require higher amounts of responsibility will experience more of that, leading to declining mental health in the higher seniority levels.
 
@@ -17,9 +16,13 @@
 
     If you would want to see further proof, check the methodology section below in this README.
 
-2. Does a bigger team size scale correlate with burnout-like metrics, such as stress levels and work-life balance, and if so why?
+2. Does a bigger team size correlate with burnout-like metrics, such as stress levels and work-life balance, and if so why?
 
     Hypothesis: Larger company/team sizes correlates with lower work-life balance, as more mental bandwith is needed due to the complexity of organizing teams at a higher scale. This lower work-life balance then leads to higher stress and burnout levels.
+
+    Status: False, larger company/team sizes do not correlate with work-life balance, stress, or burnout levels at all, indicating that it is an extremely weak predictor for burnout-like metrics.
+
+    ![Image showing no correlation between company/team size and burnout metrics](images/no-correlation-between-company-size-and-burnout-metrics.png)
 
 3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
 
@@ -115,11 +118,12 @@ So safe to say, it is actually the combination of less daily sleep hours and mor
 
 ### The Second Question
 
-pass
+First, I tried to find the correlation between team size and those burnout metrics via SQL query.
+After I wrote that, I imported it into tableau to get a nice line-graph visualization of it.
 
-### The Second Question
+Turns out, there is zero correlation, which means the hypothesis is false and team size is not a valid indicator of burnout and work life balance.
 
-pass
+![Image showing no correlation between company/team size and burnout metrics](images/no-correlation-between-company-size-and-burnout-metrics.png)
 
 ## Technical Challenges
 
