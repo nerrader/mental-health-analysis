@@ -12,6 +12,8 @@
 
     Interestingly, these psychological distress indicator scores stayed high regardless of salary. Conversely, employees with a seniority level of 1-3 have relatively stable overall mental health. This indicates that employees at this level are more usually well-rested than their senior counterparts.
 
+    Another interesting insight I found in this graph, is that job satisfaction does not seem to be influenced by psychological distress scores, it still plateaus at $110k whether or not the distress scores were high or not.
+
     ![Image of the diagram supporting the previous statements](images/first-hypothesis-summary.png)
 
     If you would want to see further proof, check the methodology section below in this README.
@@ -24,9 +26,15 @@
 
     ![Image showing no correlation between company/team size and burnout metrics](images/no-correlation-between-company-size-and-burnout-metrics.png)
 
-3. Does work location (remote, hybrid, on-site) correlate with their job satisfaction, and if so might there be any factors to explain why some work locations might be less fulfilling than others?
+3. Does the impact of work location on stress, burnout and job satisfaction vary significantly when accounting for weekly work hours, daily sleep duration, or the seniority level, and if so why?
 
-    Hypothesis: People working remotely will have better job satisfaction scores, as it allows for a more flexible lifestyle than other work locations.
+    Hypothesis: Yes, as hyrbid, and especially workers tend to have more flexible lifestyles, and that typically means they are more likely to take care of themselves, meaning they will have lower psychological distress scores than ones working on-site.
+
+    Status: False, there is no correlation between work location and stress, burnout nor job satisfaction regardless of weekly work hours, daily sleep duration and seniority level. The main cause of psychological distress is still considered to be low quality sleep and high work hours.
+
+    However, the job satisfaction scores for employees with high seniority are still slightly higher than those in the normal group. This further proves the insight in question one, where while higher salaries do correlate with higher job satisfaction until a certain point, they do not help with the increasing psychological distress scores, as it climbs.
+
+    ![Work location analysis summary](images/work-location-analysis-summary.png)
 
 4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
 
@@ -124,6 +132,24 @@ After I wrote that, I imported it into tableau to get a nice line-graph visualiz
 Turns out, there is zero correlation, which means the hypothesis is false and team size is not a valid indicator of burnout and work life balance.
 
 ![Image showing no correlation between company/team size and burnout metrics](images/no-correlation-between-company-size-and-burnout-metrics.png)
+
+### The Third Question
+
+Again, I wrote a SQL query to try and select the correct data and find insights related to the question.
+
+However, accounting for multiple variables at once in a single query was something I did not prepare for.
+
+I first thought of making three seperate queries, accounting for each variable. However, I realized that it would be hard to join those results later on, and consequently it would be hard to then make meaningful data insights.
+
+But then, I thought of using a `CASE` statement to group and aggregate the employees into four different brackets: 'High Seniority', 'High Hours', 'Sleep Deprived', and 'Normal'.
+
+I thought this was better than the first one, as it joins all the data together into one SQL query, and I can export the query's results into one unified .csv file for visualization in tabelau, rather than joining three other csv files.
+
+I then exported this data to tabelau, made it into four seperate bar charts (not line charts because ...), and grouped them by color to make them easily differentiable.
+
+![results of the tableau viz](images/work-location-analysis-summary.png)
+
+yeah so as you can see there no correlation, so this question is done.
 
 ## Technical Challenges
 
