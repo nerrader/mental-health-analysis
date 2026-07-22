@@ -36,9 +36,13 @@
 
     ![Work location analysis summary](images/work-location-analysis-summary.png)
 
-4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having high clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
+4. Are there any geographical regions or countries that have a higher correlation between the gap of employees having moderate to severe clinical PHQ9 and/or GAD7 scores, and mental health support/therapy usage, and what factors might explain this disparity?
 
     Hypothesis: It will have a pattern, as the country's culture, and stigma related to mental health and therapy, will significantly impact the amount of people getting help.
+
+    Status: False, there seems to be no pattern, and the amount of employees seeking mental health remain consistently high regardless of geographical region/country, fortunately.
+
+    ![Country Mental Health Stigma Analysis Summary](images/country-mental-health-stigma-analysis-summary.png)
 
 ## Key Insights
 
@@ -150,6 +154,22 @@ I then exported this data to tabelau, made it into four seperate bar charts (not
 ![results of the tableau viz](images/work-location-analysis-summary.png)
 
 yeah so as you can see there no correlation, so this question is done.
+
+## The Fourth Question
+
+For easier analysis, I decided to start by trying to prove my hypothesis was incorrect, that there is no pattern and no correlation between geographical region/country and mental health stigma.
+
+This would mean I would have to generate a SQL query, selecting country, PHQ9 and GAD7 categories, the `seeks_mental_health_support` column, and the total amount of employees in those categories
+
+Though, I also quickly changed my approach as I realized that a score of 10 on both these metrics were considered 'Moderate' and so I could just simplify my filtering and just filter for the scores above that threshold, which also allows for a bigger sample size. This allowed me to disregard the categories I thought I would need.
+
+I also realized that I could just change the `seeks_mental_health_support` column and the total column into one `seeking_mental_health_percentage`. This would allow for more straightforward analysis and visualization.
+
+![The graph showing no pattern between countries and mental helath support percentage](images/country-mental-health-stigma-analysis-summary.png)
+
+Surprisingly, the percentages all remained quite high, which contradicted my hypothesis which stated that countries that have a more pronounced social stigma surrounding mental health like Singapore or China would have significantly lower seeking mental health support percentages.
+
+However, fortunately, that is not the case, and there seems to be no pattern with seeking mental health and geographical region, with a range of only 8(%).
 
 ## Technical Challenges
 
